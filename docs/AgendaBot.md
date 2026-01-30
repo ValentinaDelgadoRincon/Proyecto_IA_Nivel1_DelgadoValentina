@@ -30,6 +30,8 @@ Gestión de Ayuda (Opción 0): Se observa que al enviar el número "0", el bot c
  ## Repotes
 
  - 
+
+ 
  ## configuracion
  - Aqui nos enseña como es nuestra informacion como usuario 
  ![alt text](image-8.png)
