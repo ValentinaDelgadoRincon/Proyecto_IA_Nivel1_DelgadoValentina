@@ -310,12 +310,13 @@ AgendaBot valida:
 
 ## 🚀 Estado del Proyecto
 
-📍 En desarrollo.
+📍 Completado.
 
 ---
 
 ## 👨‍💻 Autor
 
 Valentina Delgado Rincon | https://github.com/ValentinaDelgadoRincon  
+Michel Lorena Rodriguez  | https://github.com/michelrodriguez05  
 Proyecto desarrollado con enfoque en automatización accesible y gratuita.
 
