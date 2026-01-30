@@ -317,6 +317,10 @@ AgendaBot valida:
 ## 👨‍💻 Autor
 
 Valentina Delgado Rincon | https://github.com/ValentinaDelgadoRincon  
+<<<<<<< Updated upstream
 Michel Lorena Rodriguez  | https://github.com/michelrodriguez05  
+=======
+
+>>>>>>> Stashed changes
 Proyecto desarrollado con enfoque en automatización accesible y gratuita.
 
