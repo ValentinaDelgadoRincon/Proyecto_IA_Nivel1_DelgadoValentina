@@ -1,0 +1,498 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "actual_screen"
+            },
+            {
+              "name": "sessionId"
+            },
+            {
+              "name": "chatInput"
+            }
+          ]
+        }
+      },
+      "id": "d2ec3b45-6db0-4945-9dfd-c2a38df812f2",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        160,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Start').item.json.sessionId }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1424,
+        800
+      ],
+      "id": "d69da87f-4be4-4342-ba04-0752d3d65d0f",
+      "name": "Simple Memory2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1495084735,
+          "mode": "list",
+          "cachedResultName": "SESSIONS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=1495084735"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "telegram_user",
+              "lookupValue": "={{ $json.sessionId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        640,
+        800
+      ],
+      "id": "dd82c2fa-82be-4b42-a73c-720599f6fe34",
+      "name": "Obtain Session Info",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b8d547ae-1d75-4885-ae8f-9c8d1ba18ef1",
+              "name": "output",
+              "value": "={{ $json.output.parseJson() }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        848,
+        576
+      ],
+      "id": "52dfb935-aa4d-4e06-ba04-4d7935d08038",
+      "name": "Edit Fields2",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "50322c34-5a84-4662-8f0c-086882837e80",
+              "name": "output",
+              "value": "={{ $json.output.parseJson() }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1760,
+        576
+      ],
+      "id": "54d00c81-5668-4e8a-bf80-75ab97fbb242",
+      "name": "Edit Fields3",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 7
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        512,
+        800
+      ],
+      "id": "37e119e4-0052-40a6-aea6-ca41c2712959",
+      "name": "Simple Memory3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = items[0].json.output;\n\nif (!raw) {\n  return { json: { error: \"No output received\" } };\n}\n\nif (typeof raw === 'object' && raw !== null) {\n    return {\n        json: {\n            output: raw\n        }\n    };\n}\n\nlet braceCount = 0;\nlet startIndex = raw.indexOf('{');\nlet endIndex = -1;\n\nif (startIndex === -1) {\n   return { json: { error: \"No JSON found\" } };\n}\n\nfor (let i = startIndex; i < raw.length; i++) {\n    if (raw[i] === '{') {\n        braceCount++;\n    } else if (raw[i] === '}') {\n        braceCount--;\n\n        if (braceCount === 0) {\n            endIndex = i;\n            break; \n        }\n    }\n}\n\nif (endIndex !== -1) {\n    const cleanJsonString = raw.substring(startIndex, endIndex + 1);\n    try {\n        const parsedObject = JSON.parse(cleanJsonString);\n        return {\n            json: {\n                output: parsedObject\n            }\n        };\n    } catch (e) {\n        throw new Error(\"Error parseando el JSON limpio: \" + e.message);\n    }\n} else {\n    throw new Error(\"No se pudo encontrar un objeto JSON completo en la respuesta.\");\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1072,
+        576
+      ],
+      "id": "58494acc-89ec-4ca9-b809-062173950cf1",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = items[0].json.output;\n\nif (!raw) {\n  return { json: { error: \"No output received\" } };\n}\n\nif (typeof raw === 'object' && raw !== null) {\n    return {\n        json: {\n            output: raw\n        }\n    };\n}\n\nlet braceCount = 0;\nlet startIndex = raw.indexOf('{');\nlet endIndex = -1;\n\nif (startIndex === -1) {\n   return { json: { error: \"No JSON found\" } };\n}\n\nfor (let i = startIndex; i < raw.length; i++) {\n    if (raw[i] === '{') {\n        braceCount++;\n    } else if (raw[i] === '}') {\n        braceCount--;\n        if (braceCount === 0) {\n            endIndex = i;\n            break; \n        }\n    }\n}\n\nif (endIndex !== -1) {\n    const cleanJsonString = raw.substring(startIndex, endIndex + 1);\n    try {\n        const parsedObject = JSON.parse(cleanJsonString);\n\n        return {\n            json: {\n                output: parsedObject\n            }\n        };\n    } catch (e) {\n        throw new Error(\"Error parseando el JSON limpio: \" + e.message);\n    }\n} else {\n    throw new Error(\"No se pudo encontrar un objeto JSON completo en la respuesta.\");\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1984,
+        576
+      ],
+      "id": "b65fcb50-e904-449f-ba68-15c26bac06c1",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=Eres un componente técnico de \"Middleware\" para AgendaBot.\nNO eres un asistente conversacional. NO tomes decisiones sobre el flujo.\nTu ÚNICA función es ejecutar la herramienta `obtain_session_info` y formatear la salida.\n\n# INSTRUCCIONES DE EJECUCIÓN\n1. Llama a la herramienta `obtain_session_info` usando el ID del usuario.\n2. Toma el resultado crudo de la herramienta.\n3. Combínalo con el input actual del usuario.\n4. Genera UN SOLO objeto JSON final.\n\n# REGLAS CRÍTICAS DE SALIDA\n- **Siempre** debes usar la herramienta `obtain_session_info`.\n- NO incluyas bloques de código markdown (```json).\n- NO incluyas explicaciones ni texto fuera del JSON.\n- NO intentes predecir el siguiente paso del bot.\n- NO repitas la salida. Solo un JSON.\n\n\n# ESTRUCTURA OBLIGATORIA DEL JSON\n{\n  \"telegram_user\": \"ID_RECUPERADO\",\n  \"pantalla_actual\": \"VALOR_RECUPERADO\",\n  \"paso_actual\": \"VALOR_RECUPERADO\",\n  \"datos_parciales\": \"VALOR_RECUPERADO_TAL_CUAL\",\n  \"input\": \"{{ $json.chatInput }}\"\n}\n\n# USO DE LA MEMORIA\n- Solamente debes utilizar la memoria para recuperar los datos parciales. NO la debes utilizar para recordar más cosas. Solamente los datos:\n\nNombre:\nFrecuencia:\nHora:"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        448,
+        576
+      ],
+      "id": "c4e70301-61d3-45fe-86dc-50f5a1eae416",
+      "name": "MEMORIA HABITOS"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.output }}",
+        "options": {
+          "systemMessage": "=Eres el Asistente de Agendamiento de AgendaBot.\nTu tarea es guiar al usuario a través de un proceso de 3 pasos para crear un hábito.\n\n# CONTEXTO ACTUAL (Inputs del Sistema)\n- Paso actual: {{ $json.output.paso_actual }}\n- Datos guardados hasta ahora: {{ $json.output.datos_parciales }}\n- Mensaje del usuario: {{ $json.output.input }}\n- Pantalla actual: \"HABITOS\"\n\n# LÓGICA DE CANCELACIÓN GLOBAL\nSi el usuario escribe \"9\" o \"cancelar\" (y NO está en el menú de éxito final):\n- Acción: CANCELAR_PROCESO\n- Mensaje: \"Proceso terminado.\\n¿Qué deseas hacer ahora?\\n1. Volver a Agenda\\n9. Ir al menú principal\"\n\n# MÁQUINA DE ESTADOS (WIZARD)\n\n## SI EL PASO ACTUAL ES \"0\" o vacio (Inicio)\n- REGLA: No proceses el mensaje del usuario. Ignóralo totalmente aunque sea un número.\n- Acción: AVANZAR_PASO\n- Siguiente Paso: \"1\"\n- Mensaje: \"Paso 1 de 3\\n¿Cual es el nombre del habito?\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"1\" (Esperando nombre del habito)\nGuardar nombre del habito.\n- Siguiente Paso: \"2\". Mensaje: \"Paso 2 de 3\\n¿Con qué frecuencia realizas este habito?\\n1. Diaria \\n2. Semanal\\n3. Mensual\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"2\" (Esperando frecuencia)\n- Si \"1\": Guardar \"Diaria\". Ir a Paso \"3\".\n- Si \"2\": Guardar \"Semanal\". Ir a Paso \"3\".\n- Si \"3\": Guardar \"Mensual\". Ir a Paso \"3\".\n- Si \"9\": Ejecutar Cancelación Global.\n- Siguiente Paso: \"3\". Mensaje: \"Paso 3 de 3\\n¿Cual es la hora a recordar?\\nFormato 24 horas (HH:MM)\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"3\" (Esperando hora)\n- Validar formato HH:MM.\n- Si VÁLIDO: Guardar hora. Siguiente Paso: \"4\". Mensaje para el Paso 4: Mostrar resumen con los datos recolectados (Nombre, Frecuencia, Hora). Al final preguntar: \"¿Qué deseas hacer?\\n1. Confirmar y guardar\\n2. Editar información\\n\\n9. Volver al menú principal.\"\n- Si INVÁLIDO: Repetir Paso \"3\". Mensaje: \"Formato de hora incorrecto. Por favor usa HH:MM.\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"4\" (Confirmación)\n- Si \"1\": Acción: GUARDAR_HABITO. Mensaje: \"¡Listo! Tu tarea ha sido creada correctamente.\\n\\nID del habito: HABITO-{{$now.format('x')}}\\n\\n¿Qué deseas hacer ahora?\\n1. Volver a Habito\\n9. Ir al menú principal\"\n- Si \"2\": Acción: REINICIAR. Siguiente Paso: \"1\". Mensaje: (Pregunta del paso 1).\n- Si \"3\": Ejecutar Cancelación Global.\n\n## SI EL PROCESO TERMINÓ (Menú Post-Tarea o Post-Cancelación)\n- Si \"1\": Reiniciar Wizard (Ir a Paso 1).\n- Si \"9\": Acción: SALIR_MENU.\n\n# FORMATO DE RESPUESTA JSON (OBLIGATORIO)\nResponde ÚNICAMENTE con este objeto JSON:\n{\n  \"output\": \"Texto para Telegram\",\n  \"data\": {\n    \"next_step\": \"Número del siguiente paso (string)\",\n    \"temp_data\": { ...objeto con los datos acumulados... },\n    \"action\": \"CONTINUAR | GUARDAR_HABITO | CANCELAR_PROCESO | SALIR_MENU\",\n    \"actual_screen\": \"HABITOS\"\n  }\n}\n\n# REGLA\n- Solamente debes retornar una unica vez la respuesta en JSON.\n- Piensa detenidamente.\n- Debes validar que la fecha del registro sea mayor a la fecha actual. {{ $now }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1360,
+        576
+      ],
+      "id": "d1faf449-a7e2-4ffc-afd0-be0c6f057a54",
+      "name": "HABITOS AGENT"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 913708670,
+          "mode": "list",
+          "cachedResultName": "HABITOS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=913708670"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "estado": "PENDIENTE",
+            "id_habito": "=HABITO-{{ $now.format('x') }}",
+            "nombre": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('nombre', `Nombre del habito.`, 'string') }}",
+            "frecuencia": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('frecuencia', `Diario, Semanal, Mensual.`, 'string') }}",
+            "hora_recordatorio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('hora_recordatorio', `Hora del recordatorio del hábito.`, 'string') }}",
+            "creado_por": "={{ $json.output.telegram_user }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "id_habito",
+              "displayName": "id_habito",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "frecuencia",
+              "displayName": "frecuencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "hora_recordatorio",
+              "displayName": "hora_recordatorio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "estado",
+              "displayName": "estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "creado_por",
+              "displayName": "creado_por",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "options": {}
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1552,
+        800
+      ],
+      "id": "1675011c-65f3-4235-8361-2255816a69b2",
+      "name": "Save HABITO",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        384,
+        800
+      ],
+      "id": "147e5958-cddc-4f82-8ccb-4b5a1a283bfd",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Uraezaqnm4BlWCgn",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1296,
+        800
+      ],
+      "id": "b7f04620-f00c-4088-9d00-953c0cbae018",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Uraezaqnm4BlWCgn",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "MEMORIA HABITOS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "HABITOS AGENT",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtain Session Info": {
+      "ai_tool": [
+        [
+          {
+            "node": "MEMORIA HABITOS",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory3": {
+      "ai_memory": [
+        [
+          {
+            "node": "MEMORIA HABITOS",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "HABITOS AGENT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MEMORIA HABITOS": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HABITOS AGENT": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save HABITO": {
+      "ai_tool": [
+        [
+          {
+            "node": "HABITOS AGENT",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "MEMORIA HABITOS",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "HABITOS AGENT",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "4e7f61551d974e9201959bc61f3fe1ba29fb38be1f22e798be449222f24c742f"
+  }
+}

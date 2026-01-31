@@ -1,0 +1,261 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "07ce8839-126d-44c2-abe5-1d1988fe3b23",
+              "name": "output",
+              "value": "Hola, soy *AgendaBot* 👋\n\nEstoy aquí para ayudarte a organizar tus citas, tareas y recordatorios\nde forma sencilla y sin complicaciones.\n\nPuedes escribirme en cualquier momento.\nPara avanzar, solo tienes que escribir el número de la opción que quieras usar.\n\n*Menú principal:*\n0. Ayuda\n1. Agenda (citas)\n2. Tareas\n3. Recordatorios\n4. Hábitos\n5. Listas\n6. Reportes\n7. Configuración\n\n_Tip rápido: escribe solo el número (por ejemplo: 1) y presiona enviar._",
+              "type": "string"
+            },
+            {
+              "id": "9c943a69-2d4e-4ebf-95a2-b53ecf7888be",
+              "name": "actual_screen",
+              "value": "={{ $('Start').item.json.actual_screen }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        432,
+        -160
+      ],
+      "id": "80fe4c31-a600-47e1-ac35-4fdb8f8bb842",
+      "name": "MAIN MENU"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2018582490,
+          "mode": "list",
+          "cachedResultName": "USUARIOS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=2018582490"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "telegram_user",
+              "lookupValue": "={{ $('Start').item.json.message_from_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -16,
+        -256
+      ],
+      "id": "429f9bd7-513f-4d9e-beec-43316dac9d2a",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "58e40a39-9d44-403e-8672-eecd14351475",
+              "name": "output",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            },
+            {
+              "id": "c19a72b6-cc92-43a2-a1b7-1ad74dffbad0",
+              "name": "actual_screen",
+              "value": "={{ $json.actual_screen }}",
+              "type": "string"
+            },
+            {
+              "id": "d6854b08-e8d0-4381-8e3b-d400daa45908",
+              "name": "next_step",
+              "value": "={{ $json.output.data.next_step }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        656,
+        -256
+      ],
+      "id": "4fb56bcd-6e95-4ac8-b3ac-422bf841f5fd",
+      "name": "Return"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "message_from_id"
+            },
+            {
+              "name": "actual_screen"
+            }
+          ]
+        }
+      },
+      "id": "83853f69-e997-4c5e-84bc-a70cfbb65872",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -240,
+        -256
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "07ce8839-126d-44c2-abe5-1d1988fe3b23",
+              "name": "output",
+              "value": "Hola, soy *AgendaBot* 👋\n\nEstoy aquí para ayudarte a organizar tus citas, tareas y recordatorios\nde forma sencilla y sin complicaciones.\n\nPuedes escribirme en cualquier momento.\nPara avanzar, solo tienes que escribir el número de la opción que quieras usar.\n\n*Menú principal:*\n0. Ayuda\n1. Agenda (citas)\n2. Tareas\n3. Recordatorios\n4. Hábitos\n5. Listas\n6. Reportes\n7. Configuración\n8. Administrador\n\n_Tip rápido: escribe solo el número (por ejemplo: 1) y presiona enviar._",
+              "type": "string"
+            },
+            {
+              "id": "9c943a69-2d4e-4ebf-95a2-b53ecf7888be",
+              "name": "=actual_screen",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        432,
+        -352
+      ],
+      "id": "35c2bc4e-56b2-4400-871b-8acfa3335dfa",
+      "name": "MAIN MENU ADMIN"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "60831019-6c5d-48ce-ad9d-8cf952454a07",
+              "leftValue": "={{ $json.rol }}",
+              "rightValue": "ADMIN",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        -256
+      ],
+      "id": "4bb3cf54-1ccd-4666-a3fb-eb0fb5612521",
+      "name": "Admin?"
+    }
+  ],
+  "connections": {
+    "MAIN MENU": {
+      "main": [
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Admin?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MAIN MENU ADMIN": {
+      "main": [
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Admin?": {
+      "main": [
+        [
+          {
+            "node": "MAIN MENU ADMIN",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "MAIN MENU",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "4e7f61551d974e9201959bc61f3fe1ba29fb38be1f22e798be449222f24c742f"
+  }
+}

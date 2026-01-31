@@ -1,0 +1,116 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "telegram_user"
+            }
+          ]
+        }
+      },
+      "id": "3ade0db4-823a-4c3d-b38a-1d6a83776180",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -416,
+        1264
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2018582490,
+          "mode": "list",
+          "cachedResultName": "USUARIOS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=2018582490"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "telegram_user",
+              "lookupValue": "={{ $json.telegram_user }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -208,
+        1264
+      ],
+      "id": "cfc59a9b-a860-4916-a265-7763655047b4",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6f6b594f-63a9-4853-b788-405b9abd2587",
+              "name": "output",
+              "value": "=Aquí tienes la información de tu perfil, **{{ $json.nombre }}** ⚙️\n\n👤 **Nombre:** {{ $json.nombre }}\n🆔 **Telegram ID:** {{ $json.telegram_user }}\n🎖️ **Rol:** {{ $json.rol }}\n✅ **Estado:** {{ $json.permitido ? 'Cuenta Activa' : 'Restringido' }}\n\nPuedes revisar tus datos en cualquier momento. Si necesitas realizar un cambio, elige una opción:\n\n9. Volver al menú principal\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        1264
+      ],
+      "id": "cab03e5e-e5e4-4fed-b99d-e478da035556",
+      "name": "Edit Fields"
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4e7f61551d974e9201959bc61f3fe1ba29fb38be1f22e798be449222f24c742f"
+  }
+}

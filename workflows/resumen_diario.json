@@ -1,0 +1,281 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -1264,
+        -80
+      ],
+      "id": "4a339d27-6182-44f7-8c5c-dbe933985a69",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 761378897,
+          "mode": "list",
+          "cachedResultName": "LOGS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=761378897"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "timestamp",
+              "lookupValue": "={{ $now.minus(1, 'days').format('yyyy-MM-dd') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1040,
+        -80
+      ],
+      "id": "42c9b4d8-a722-4059-a368-3959c317e262",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst grouped = {};\n\nitems.forEach(item => {\n  const user = item.json.telegram_user;\n  \n  if (!grouped[user]) {\n    grouped[user] = {\n      telegram_user: user,\n      interacciones: [],\n      total_registros: 0\n    };\n  }\n  \n  grouped[user].interacciones.push(item.json);\n  grouped[user].total_registros++;\n});\n\nreturn Object.values(grouped).map(data => {\n  return {\n    json: data\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -816,
+        -80
+      ],
+      "id": "887420c9-7559-4242-a1d1-a03ce6a304df",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -592,
+        -80
+      ],
+      "id": "742723e0-d281-4587-8a29-0680afc7cbd1",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.respuestas_concatenadas }}",
+        "options": {
+          "systemMessage": "Eres un agente de IA el cual se encarga de hacer un resumen de todo lo que el usuario te envie.\nLo que el usuario te envia son las respuestas de las interacciones que tiene con un chatbot. Necesita que le hagas el resumen de toda la conversacion.\n\nDebes enviar el resumen visualmente bonito y en formato markdown.\n\n# Regla\n- Debes omitir los ```markdown. Solamente debes enviar el texto tal cual en ese formato."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -144,
+        -208
+      ],
+      "id": "bd7751a7-9714-4590-8c18-e4ce62331812",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nreturn items.map(item => {\n  const data = item.json;\n  \n  const todasLasRespuestas = data.interacciones\n    .map(inter => inter.resultado)\n    .join('\\n\\n---\\n\\n');\n\n  return {\n    json: {\n      telegram_user: data.telegram_user,\n      total_respuestas: data.total_registros,\n      respuestas_concatenadas: todasLasRespuestas\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -368,
+        -208
+      ],
+      "id": "e643ac84-f72d-46ac-9d41-b00ed5c21412",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Loop Over Items').item.json.telegram_user }}",
+        "text": "={{ $json.output }}]\n\n9. Menú principal.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        -80
+      ],
+      "id": "ce0e4586-2668-4ce7-8810-a92bfa53c27a",
+      "name": "Send a text message",
+      "webhookId": "3c5d43e2-9ef8-48d2-8e5f-7a02002914cb",
+      "credentials": {
+        "telegramApi": {
+          "id": "Xd6DqLOE6H1W8yaH",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1264,
+        -272
+      ],
+      "id": "75071634-d704-4390-9648-a1f2d7c5cd8c",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        -16
+      ],
+      "id": "e1d8717c-0a86-4f50-937d-5776c831bd70",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Uraezaqnm4BlWCgn",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4e7f61551d974e9201959bc61f3fe1ba29fb38be1f22e798be449222f24c742f"
+  }
+}

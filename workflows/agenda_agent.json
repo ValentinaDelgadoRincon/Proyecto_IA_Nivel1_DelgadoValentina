@@ -1,0 +1,524 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Start').item.json.sessionId }}",
+        "contextWindowLength": 7
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1152,
+        128
+      ],
+      "id": "c074c5f8-00af-4962-8f5d-2b07cec12d2e",
+      "name": "Simple Memory2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1024407466,
+          "mode": "list",
+          "cachedResultName": "CITAS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=1024407466"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp_creacion": "={{ $now }}",
+            "id_cita": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('id_cita', `Identificador unico para la cita.`, 'string') }}",
+            "fecha": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fecha', `Fecha en la cual el usuario desea la cita.`, 'string') }}",
+            "hora": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('hora', `Hora la cual el usuario desea la cita.`, 'string') }}",
+            "nombre": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('nombre', `Nombre del usuario que quiere la cita.`, 'string') }}",
+            "motivo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('motivo', `Motivo por el cual el usuario quiere la cita.`, 'string') }}",
+            "estado": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('estado', `El estado debe estar por defecto en \"PENDIENTE\".`, 'string') }}",
+            "canal": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('canal', `Canal de atencion por el cual el usuario quiere la cita.`, 'string') }}",
+            "creado_por": "={{ $('Edit Fields').item.json.output.telegram_user }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "id_cita",
+              "displayName": "id_cita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "fecha",
+              "displayName": "fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hora",
+              "displayName": "hora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "motivo",
+              "displayName": "motivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "canal",
+              "displayName": "canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "estado",
+              "displayName": "estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "creado_por",
+              "displayName": "creado_por",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "timestamp_creacion",
+              "displayName": "timestamp_creacion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1280,
+        128
+      ],
+      "id": "ddc387bf-98cc-4084-90a3-867c645d624d",
+      "name": "Save CITA",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.output }}",
+        "options": {
+          "systemMessage": "=Eres el Asistente de Agendamiento de AgendaBot.\nTu tarea es guiar al usuario a través de un proceso de 6 pasos para crear una cita.\n\n# CONTEXTO ACTUAL (Inputs del Sistema)\n- Paso actual: {{ $json.output.paso_actual }}\n- Datos guardados hasta ahora: {{ $json.output.datos_parciales }}\n- Mensaje del usuario: {{ $json.output.input }}\n- Pantalla actual: \"AGENDA\"\n\n# LÓGICA DE CANCELACIÓN GLOBAL\nSi el usuario escribe \"9\" o \"cancelar\" (y NO está en el menú de éxito final):\n- Acción: CANCELAR_PROCESO\n- Mensaje: \"Proceso terminado.\\n¿Qué deseas hacer ahora?\\n1. Volver a Agenda\\n9. Ir al menú principal\"\n\n# MÁQUINA DE ESTADOS (WIZARD)\n\n## SI EL PASO ES \"0\" (Inicio)\n- Acción: AVANZAR_PASO\n- Siguiente Paso: \"1\"\n- Mensaje: \"Paso 1 de 6\\n¿Cuál es la fecha de la cita?\\nFormato: YYYY-MM-DD\\nEjemplo: 2025-12-20\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"1\" (Esperando Fecha)\n- Validar formato YYYY-MM-DD.\n- Si VÁLIDO: Guardar fecha. Siguiente Paso: \"2\". Mensaje: \"Paso 2 de 6\\n¿A qué hora será la cita?\\nFormato 24 horas (HH:MM)\\nEjemplo: 14:30\\n\\n9. Volver al menú principal.\"\n- Si INVÁLIDO: Repetir Paso \"1\". Mensaje: \"Formato de fecha incorrecto. Por favor usa YYYY-MM-DD.\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"2\" (Esperando Hora)\n- Validar formato HH:MM.\n- Si VÁLIDO: Guardar hora. Siguiente Paso: \"3\". Mensaje: \"Paso 3 de 6\\n¿A nombre de quién es la cita?\\nEscribe el nombre completo.\\n\\n9. Volver al menú principal.\"\n- Si INVÁLIDO: Repetir Paso \"2\". Mensaje: \"Formato de hora incorrecto. Por favor usa HH:MM.\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"3\" (Esperando Nombre)\n- Guardar nombre. Siguiente Paso: \"4\". Mensaje: \"Paso 4 de 6\\nCuéntame brevemente el motivo de la cita.\\nEjemplo: Asesoría técnica\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"4\" (Esperando Motivo)\n- Guardar motivo. Siguiente Paso: \"5\". Mensaje: \"Paso 5 de 6\\n¿Cómo será la atención?\\n1. Presencial\\n2. Virtual\\n3. Llamada\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"5\" (Esperando Canal)\n- Si \"1\": Guardar \"Presencial\". Ir a Paso \"6\".\n- Si \"2\": Guardar \"Virtual\". Ir a Paso \"6\".\n- Si \"3\": Guardar \"Llamada\". Ir a Paso \"6\".\n- Si \"9\": Ejecutar Cancelación Global.\n- Mensaje para el Paso 6: Mostrar resumen con los datos recolectados (Fecha, Hora, Cliente, Motivo, Canal). Al final preguntar: \"¿Qué deseas hacer?\\n1. Confirmar y guardar\\n2. Editar información\\n\\n9. Volver al menú principal.\"\n\n## SI EL PASO ES \"6\" (Confirmación)\n- Si \"1\": Acción: GUARDAR_CITA. Mensaje: \"¡Listo! Tu cita quedó agendada correctamente.\\n\\nID de la cita: CITA-{{$now.format('x')}}\\n\\n¿Qué deseas hacer ahora?\\n1. Volver a Agenda\\n9. Ir al menú principal\"\n- Si \"2\": Acción: REINICIAR. Siguiente Paso: \"1\". Mensaje: (Pregunta del paso 1).\n- Si \"3\": Ejecutar Cancelación Global.\n\n## SI EL PROCESO TERMINÓ (Menú Post-Cita o Post-Cancelación)\n- Si \"1\": Reiniciar Wizard (Ir a Paso 1).\n- Si \"9\": Acción: SALIR_MENU.\n\n# FORMATO DE RESPUESTA JSON (OBLIGATORIO)\nResponde ÚNICAMENTE con este objeto JSON:\n{\n  \"output\": \"Texto para Telegram\",\n  \"data\": {\n    \"next_step\": \"Número del siguiente paso (string)\",\n    \"temp_data\": { ...objeto con los datos acumulados... },\n    \"action\": \"CONTINUAR | GUARDAR_CITA | CANCELAR_PROCESO | SALIR_MENU\",\n    \"actual_screen\": \"AGENDA\"\n  }\n}\n\n# REGLA\n- Solamente debes retornar una unica vez la respuesta en JSON.\n- Piensa detenidamente.\n- Debes validar que la fecha de la cita, sea mayor a la fecha actual. {{ $now }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1088,
+        -96
+      ],
+      "id": "6ac2734a-2c3a-4a25-91d4-7952fa3dd5fa",
+      "name": "AGENDA"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "actual_screen"
+            },
+            {
+              "name": "sessionId"
+            },
+            {
+              "name": "chatInput"
+            }
+          ]
+        }
+      },
+      "id": "5b1e2cad-3cad-42fe-8656-789ea87e9c71",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -112,
+        -96
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=Eres un componente técnico de \"Middleware\" para AgendaBot.\nNO eres un asistente conversacional. NO tomes decisiones sobre el flujo.\nTu ÚNICA función es ejecutar la herramienta `obtain_session_info` y formatear la salida.\n\n# INSTRUCCIONES DE EJECUCIÓN\n1. Llama a la herramienta `obtain_session_info` usando el ID del usuario.\n2. Toma el resultado crudo de la herramienta.\n3. Combínalo con el input actual del usuario.\n4. Genera UN SOLO objeto JSON final.\n\n# REGLAS CRÍTICAS DE SALIDA\n- **Siempre** debes usar la herramienta `obtain_session_info`.\n- NO incluyas bloques de código markdown (```json).\n- NO incluyas explicaciones ni texto fuera del JSON.\n- NO intentes predecir el siguiente paso del bot.\n- NO repitas la salida. Solo un JSON.\n\n\n# ESTRUCTURA OBLIGATORIA DEL JSON\n{\n  \"telegram_user\": \"ID_RECUPERADO\",\n  \"pantalla_actual\": \"VALOR_RECUPERADO\",\n  \"paso_actual\": \"VALOR_RECUPERADO\",\n  \"datos_parciales\": \"VALOR_RECUPERADO_TAL_CUAL\",\n  \"input\": \"{{ $json.chatInput }}\"\n}\n\n# USO DE LA MEMORIA\n- Solamente debes utilizar la memoria para recuperar los datos parciales. NO la debes utilizar para recordar más cosas. Solamente los datos:\n\nFecha:\nHora:\nNombre:\nMotivo:\nCanal:"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        176,
+        -96
+      ],
+      "id": "36f95c69-4131-4f72-81f3-69b41ec46091",
+      "name": "MEMORIA AGENDA"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1495084735,
+          "mode": "list",
+          "cachedResultName": "SESSIONS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=1495084735"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "telegram_user",
+              "lookupValue": "={{ $json.sessionId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        368,
+        128
+      ],
+      "id": "21aa6d01-cc47-49a7-aa93-499c5087f4cc",
+      "name": "Obtain Session Info",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b8d547ae-1d75-4885-ae8f-9c8d1ba18ef1",
+              "name": "output",
+              "value": "={{ $json.output.parseJson() }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        576,
+        -96
+      ],
+      "id": "77cf1191-dde2-4207-896c-8150ae82783e",
+      "name": "Edit Fields",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "50322c34-5a84-4662-8f0c-086882837e80",
+              "name": "output",
+              "value": "={{ $json.output.parseJson() }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1488,
+        -96
+      ],
+      "id": "fcb9fbfb-282a-48a0-bee5-43d592cba298",
+      "name": "Edit Fields1",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 7
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        128
+      ],
+      "id": "1f777cb4-8880-4a90-a5f1-2e69ee352cba",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = items[0].json.output;\n\nif (!raw) {\n  return { json: { error: \"No output received\" } };\n}\n\nlet braceCount = 0;\nlet startIndex = raw.indexOf('{');\nlet endIndex = -1;\n\nif (startIndex === -1) {\n   return { json: { error: \"No JSON found\" } };\n}\n\n\nfor (let i = startIndex; i < raw.length; i++) {\n    if (raw[i] === '{') {\n        braceCount++;\n    } else if (raw[i] === '}') {\n        braceCount--;\n\n        if (braceCount === 0) {\n            endIndex = i;\n            break; \n        }\n    }\n}\n\nif (endIndex !== -1) {\n    const cleanJsonString = raw.substring(startIndex, endIndex + 1);\n    try {\n        const parsedObject = JSON.parse(cleanJsonString);\n        return {\n            json: {\n                output: parsedObject\n            }\n        };\n    } catch (e) {\n        throw new Error(\"Error parseando el JSON limpio: \" + e.message);\n    }\n} else {\n    throw new Error(\"No se pudo encontrar un objeto JSON completo en la respuesta.\");\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        -32
+      ],
+      "id": "fdd0e41c-2841-407e-86d3-c84a53061f65",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = items[0].json.output;\n\nif (!raw) {\n  return { json: { error: \"No output received\" } };\n}\n\nlet braceCount = 0;\nlet startIndex = raw.indexOf('{');\nlet endIndex = -1;\n\nif (startIndex === -1) {\n   return { json: { error: \"No JSON found\" } };\n}\n\nfor (let i = startIndex; i < raw.length; i++) {\n    if (raw[i] === '{') {\n        braceCount++;\n    } else if (raw[i] === '}') {\n        braceCount--;\n        // Cuando el contador vuelve a cero, hemos encontrado el cierre del primer objeto\n        if (braceCount === 0) {\n            endIndex = i;\n            break; \n        }\n    }\n}\n\nif (endIndex !== -1) {\n    const cleanJsonString = raw.substring(startIndex, endIndex + 1);\n    try {\n        const parsedObject = JSON.parse(cleanJsonString);\n\n        return {\n            json: {\n                output: parsedObject\n            }\n        };\n    } catch (e) {\n        throw new Error(\"Error parseando el JSON limpio: \" + e.message);\n    }\n} else {\n    throw new Error(\"No se pudo encontrar un objeto JSON completo en la respuesta.\");\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1712,
+        -96
+      ],
+      "id": "e5e644a9-d4e4-4ea7-978a-d2535c31a6cc",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1024,
+        128
+      ],
+      "id": "d2121db7-f9a7-418d-a757-1de1285cd50a",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Uraezaqnm4BlWCgn",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        112,
+        128
+      ],
+      "id": "8a2e564d-e618-4eb0-ad16-3826bf52f714",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Uraezaqnm4BlWCgn",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Simple Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "AGENDA",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save CITA": {
+      "ai_tool": [
+        [
+          {
+            "node": "AGENDA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AGENDA": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "MEMORIA AGENDA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MEMORIA AGENDA": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtain Session Info": {
+      "ai_tool": [
+        [
+          {
+            "node": "MEMORIA AGENDA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AGENDA",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "MEMORIA AGENDA",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "AGENDA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AGENDA",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "MEMORIA AGENDA",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4e7f61551d974e9201959bc61f3fe1ba29fb38be1f22e798be449222f24c742f"
+  }
+}

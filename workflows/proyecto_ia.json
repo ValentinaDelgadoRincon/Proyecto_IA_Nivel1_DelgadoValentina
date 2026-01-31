@@ -1,0 +1,2076 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "HELP",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "f25a0654-04aa-4333-8c9f-7cfa2007f19c"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "HELP"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f79f19e4-88aa-4fb8-a3bf-89efbf0d32d0",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "MAIN_MENU",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "MAIN_MENU"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "32624a8d-b5d7-4790-8545-89a41b8c1322",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "AGENDA",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "AGENDA"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "0df09c36-dcfc-4030-876a-8b121d94b5f3",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "TAREAS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TAREAS"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "0e9a602c-294c-4136-9995-014e609156a9",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "RECORDATORIOS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "RECORDATORIOS"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "54568935-92bf-449c-a7d8-afd2d3d4e9b8",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "HABITOS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "HABITOS"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "5c1ea4d0-b50a-47b7-b28b-eeb1125e54e8",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "LISTAS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "LISTAS"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "0d103889-eb8e-49b2-942b-e20f3c3d39d3",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "REPORTES",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "REPORTES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "427e63f6-1588-4109-8626-92471c95cefe",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "CONFIG",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "CONFIG"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "47ca5915-501b-4c43-b873-2c05c6bb0a5e",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "ADMINISTRADOR",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ADMINISTRADOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -48,
+        352
+      ],
+      "id": "b12aa14c-1f74-4fc1-85b3-01b7107b71b7",
+      "name": "ACTUAL MENU"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Structured Response').item.json.sessionId }}",
+        "text": "={{ $('Structured Response').item.json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1264,
+        560
+      ],
+      "id": "8cad38ea-b59b-48ae-a660-667fb1b8dc5e",
+      "name": "Send a text message1",
+      "webhookId": "a3db47c6-c4be-4a39-b650-6fb9d84d0368",
+      "credentials": {
+        "telegramApi": {
+          "id": "Xd6DqLOE6H1W8yaH",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -2800,
+        400
+      ],
+      "id": "aa929d82-21f3-4e22-a8b7-abc27c037d0d",
+      "name": "Telegram Trigger",
+      "webhookId": "5fa131b0-f2f4-46e2-8123-5a6e2d5e1a08",
+      "credentials": {
+        "telegramApi": {
+          "id": "Xd6DqLOE6H1W8yaH",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27651669-2811-4db7-b35c-54581f9ad6e6",
+              "name": "pantalla_actual",
+              "value": "={{ $json.pantalla_actual }}",
+              "type": "string"
+            },
+            {
+              "id": "4bf7b697-0841-4ee8-b6ca-77dcbc672388",
+              "name": "telegram_user",
+              "value": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+              "type": "number"
+            },
+            {
+              "id": "40ac5b90-e105-4271-b1dd-fadd47035249",
+              "name": "chatInput",
+              "value": "={{ $('Telegram Trigger').item.json.message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "7fb25431-e82d-49fe-bda0-9980da3927a5",
+              "name": "first_name",
+              "value": "={{ $('Telegram Trigger').item.json.message.chat.first_name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1424,
+        576
+      ],
+      "id": "f13e1540-fce8-4d1b-8546-616d9175b6c9",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c478a545-576c-4fcc-85ab-0aef2505e7ee",
+              "name": "chatInput",
+              "value": "={{ $('Telegram Trigger').item.json.message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "6d3b7899-c6e4-4588-b105-e8776af25fb6",
+              "name": "sessionId",
+              "value": "={{ $json.telegram_user }}",
+              "type": "string"
+            },
+            {
+              "id": "52ea0c90-5010-4f8b-b7e5-ef6cdce722db",
+              "name": "first_name",
+              "value": "={{ $('Telegram Trigger').item.json.message.chat.first_name }}",
+              "type": "string"
+            },
+            {
+              "id": "a983471d-56b9-4145-b954-027070ababfd",
+              "name": "pantalla_actual",
+              "value": "={{ $json.pantalla_actual }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1200,
+        480
+      ],
+      "id": "0fdb0252-ead2-4866-a8a5-808e1878fea2",
+      "name": "Structured Data"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Input del usuario: {{ $('Telegram Trigger').item.json.message.text }}\nPantalla Actual: {{ $json.pantalla_actual }}",
+        "options": {
+          "systemMessage": "=Eres el Enrutador del Menú Principal de AgendaBot.\nTu ÚNICA tarea es traducir el número que envía el usuario al CÓDIGO DE PANTALLA correspondiente.\n\n# MENÚ DE REFERENCIA\n0. Ayuda -> HELP\n1. Agenda -> AGENDA\n2. Tareas -> TAREAS\n3. Recordatorios -> RECORDATORIOS\n4. Hábitos -> HABITOS\n5. Listas -> LISTAS\n6. Reportes -> REPORTES\n7. Configuración -> CONFIG\n8. Administrador -> ADMINISTRADOR\n\n# REGLAS DE TRADUCCIÓN\n\n1. Si el input es un NÚMERO del 0 al 8:\n   - Devuelve EXACTAMENTE el código de pantalla asociado arriba (ej: Input: \"1\"=\"AGENDA\", Input: \"2\"=\"TAREAS\", Input: \"3\"=\"RECORDATORIOS\" etc.).\n\n2. Si el input es \"9\" o la palabra \"cancelar\" (o variantes como \"salir\", \"volver\"):\n   - Devuelve: MAIN_MENU\n\n3. Si el input NO ES un número válido (ej: \"Hola\", \"asdasd\", \"15\"):\n   - Devuelve: MAIN_MENU\n   (Esto hará que el siguiente agente le muestre el mensaje de error o bienvenida).\n\n4. Si el usuario ya está en una pantalla, siempre debes retornar ese valor. Si el input del usuario es \"9\" como se describió en la regla 2, devuelve MAIN_MENU.\n\n# FORMATO DE RESPUESTA\nResponde con una SOLA PALABRA. Nada más.\nNo uses comillas, no uses JSON, no uses puntos finales.\n\nEjemplos válidos de tu respuesta:\nAGENDA\nHELP\nMAIN_MENU\n\n\n# VALIDACION\n- Solamente debes hacer a los dígitos cuando la pantalla actual sea MENÚ_PRINCIPAL. De resto, debes retornar la pantalla correspondiente."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -400,
+        480
+      ],
+      "id": "64748c8c-56aa-4cf0-aac9-f702e8449f2e",
+      "name": "Agente Memoria"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('If').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -224,
+        704
+      ],
+      "id": "aa48a3cb-86f0-47a9-8aa2-3f2256a968cb",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c17d4b03-ccd8-4404-a7e9-93c068a25860",
+              "name": "output",
+              "value": "**Centro de Ayuda AgendaBot** 🆘\n\n¡Hola! Aquí tienes una guía rápida para aprovecharme al máximo.\n\n🤖 **¿Cómo funciono?**\nSoy un asistente basado en opciones numéricas. No necesitas escribirme frases largas; para que te entienda mejor, solo envía el **número** de la opción que deseas usar.\n\n📂 **Resumen de Módulos:**\n• **1. Agenda:** Gestiona citas formales (fecha, hora, cliente).\n• **2. Tareas:** Organiza tus pendientes por prioridad.\n• **3. Recordatorios:** Avisos simples para que no se te pase nada.\n• **4. Hábitos:** Rastrea tus rutinas diarias.\n• **5. Listas:** Listas de compras, ideas o inventarios.\n\n⚠️ **¿Te quedaste atascado?**\nSi alguna vez te pierdes o quieres salir de una operación, escribe **9** o la palabra **cancelar**.\n• En un menú: Te lleva al menú anterior.\n• Creando algo: Cancela el proceso actual.\n\n**¿Listo para continuar?**\nEscribe **9** para volver al Menú Principal.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        352,
+        -512
+      ],
+      "id": "36617df6-8555-4469-aacc-80ee717a054f",
+      "name": "HELP"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "mfdK0tjVry1sfnFECEtN5",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/mfdK0tjVry1sfnFECEtN5",
+          "cachedResultName": "AGENDA AGENT"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chatInput": "={{ $('Telegram Trigger').item.json.message.text }}",
+            "sessionId": "={{ $('Telegram Trigger').item.json.message.from.id.toString() }}",
+            "actual_screen": "={{ $json.output }}"
+          },
+          "matchingColumns": [
+            "chatInput"
+          ],
+          "schema": [
+            {
+              "id": "actual_screen",
+              "displayName": "actual_screen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "sessionId",
+              "displayName": "sessionId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chatInput",
+              "displayName": "chatInput",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        352,
+        -64
+      ],
+      "name": "Call AGENDA AGENT",
+      "id": "50f5f9f3-2c4f-4c0c-983b-97ef7d04e042"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1495084735,
+          "mode": "list",
+          "cachedResultName": "SESSIONS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=1495084735"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telegram_user": "={{ $json.sessionId }}",
+            "pantalla_actual": "={{ $json.actual_screen }}",
+            "timestamp_ultima_interaccion": "={{ $now }}",
+            "paso_actual": "={{ $json.next_step }}"
+          },
+          "matchingColumns": [
+            "telegram_user"
+          ],
+          "schema": [
+            {
+              "id": "telegram_user",
+              "displayName": "telegram_user",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "pantalla_actual",
+              "displayName": "pantalla_actual",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "paso_actual",
+              "displayName": "paso_actual",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "datos_parciales",
+              "displayName": "datos_parciales",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "timestamp_ultima_interaccion",
+              "displayName": "timestamp_ultima_interaccion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1040,
+        464
+      ],
+      "id": "0628f032-d95b-43d4-a53e-cf57bf8e05d8",
+      "name": "UPDATE SESSION",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6d3b7899-c6e4-4588-b105-e8776af25fb6",
+              "name": "sessionId",
+              "value": "={{ $('Structured Data').item.json.sessionId }}",
+              "type": "string"
+            },
+            {
+              "id": "52ea0c90-5010-4f8b-b7e5-ef6cdce722db",
+              "name": "first_name",
+              "value": "={{ $('Structured Data').item.json.first_name }}",
+              "type": "string"
+            },
+            {
+              "id": "8e4c0756-b790-4329-96e4-fbf584711888",
+              "name": "output",
+              "value": "={{ $json.output?.output || $json.output }}",
+              "type": "string"
+            },
+            {
+              "id": "43cbf4b0-22d2-4b8e-810d-76ad14ee7d46",
+              "name": "actual_screen",
+              "value": "={{ $json.output?.data?.actual_screen || $json.actual_screen }}",
+              "type": "string"
+            },
+            {
+              "id": "fff0ed36-db23-4b54-bcff-2b5e442ca751",
+              "name": "next_step",
+              "value": "={{ $json.output.data.next_step }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        816,
+        464
+      ],
+      "id": "4d82f9de-3900-4a1a-bff1-1bbcc41e129d",
+      "name": "Structured Response"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "sOOgBFmQF9KxQ5cH9jdnc",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/sOOgBFmQF9KxQ5cH9jdnc",
+          "cachedResultName": "TAREAS AGENT"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chatInput": "={{ $('Telegram Trigger').item.json.message.text }}",
+            "actual_screen": "={{ $json.output }}",
+            "sessionId": "={{ $('Telegram Trigger').item.json.message.from.id.toString() }}"
+          },
+          "matchingColumns": [
+            "chatInput"
+          ],
+          "schema": [
+            {
+              "id": "actual_screen",
+              "displayName": "actual_screen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "sessionId",
+              "displayName": "sessionId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chatInput",
+              "displayName": "chatInput",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        352,
+        160
+      ],
+      "name": "Call TAREAS AGENT",
+      "id": "9a76ff3e-0720-4dcc-9b70-44281d7177ed"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "cdf40cd8-ab87-4c54-bab0-3a50e9de8b3c",
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "9",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -976,
+        480
+      ],
+      "id": "3703942b-8cd5-429a-ae08-93272fe77e80",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "mode": "delete",
+        "deleteMode": "all"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        -752,
+        608
+      ],
+      "id": "b182974e-9c0f-4964-a8db-eb50ee076af9",
+      "name": "Chat Memory Manager"
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -688,
+        832
+      ],
+      "id": "1f087e44-d8b4-4e3e-9912-d54c8a73b3db",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "qzGJsvoCaLswomaseDwdf",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/qzGJsvoCaLswomaseDwdf",
+          "cachedResultName": "RECORDATORIOS AGENT"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telegram_user": "={{ $('Telegram Trigger').item.json.message.from.id.toString() }}"
+          },
+          "matchingColumns": [
+            "chatInput"
+          ],
+          "schema": [
+            {
+              "id": "telegram_user",
+              "displayName": "telegram_user",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        352,
+        384
+      ],
+      "name": "Call RECORDATORIOS AGENT",
+      "id": "12bcd0f8-2074-4b72-867f-569ceca4e01c"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2018582490,
+          "mode": "list",
+          "cachedResultName": "USUARIOS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=2018582490"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telegram_user": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+            "nombre": "={{ $('Telegram Trigger').item.json.message.from.first_name }}",
+            "rol": "USUARIO",
+            "permitido": "true"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "telegram_user",
+              "displayName": "telegram_user",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "rol",
+              "displayName": "rol",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "permitido",
+              "displayName": "permitido",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1424,
+        192
+      ],
+      "id": "dc8d83c0-b295-4436-b6ef-dce4d13d64da",
+      "name": "Save Usuario",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "InH77SlAH0Rkun0A",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/InH77SlAH0Rkun0A",
+          "cachedResultName": "HABITOS AGENT"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chatInput": "={{ $('Telegram Trigger').item.json.message.text }}",
+            "actual_screen": "={{ $json.output }}",
+            "sessionId": "={{ $('Telegram Trigger').item.json.message.from.id.toString() }}"
+          },
+          "matchingColumns": [
+            "chatInput"
+          ],
+          "schema": [
+            {
+              "id": "actual_screen",
+              "displayName": "actual_screen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "sessionId",
+              "displayName": "sessionId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chatInput",
+              "displayName": "chatInput",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        352,
+        608
+      ],
+      "name": "Call HABITOS AGENT",
+      "id": "2d334280-583c-4c91-8b5d-7354b2767d38"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "UVL2kRvFz53qGisC68QhP",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/UVL2kRvFz53qGisC68QhP",
+          "cachedResultName": "RESUMEN DIARIO"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        352,
+        1056
+      ],
+      "id": "e8b90cff-9216-4892-96a2-51de5d27e64a",
+      "name": "Call 'RESUMEN DIARIO'"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "OwNow9Oj4XbhW9qb",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/OwNow9Oj4XbhW9qb",
+          "cachedResultName": "CONFIG AGENT"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telegram_user": "={{ $('Telegram Trigger').item.json.message.from.id.toString() }}"
+          },
+          "matchingColumns": [
+            "chatInput"
+          ],
+          "schema": [
+            {
+              "id": "telegram_user",
+              "displayName": "telegram_user",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        352,
+        1280
+      ],
+      "name": "Call CONFIG AGENT",
+      "id": "97b9e671-7c29-4f71-ab7b-5a2d7164bc0a"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "fAz6bJTJudjPxWa2",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/fAz6bJTJudjPxWa2",
+          "cachedResultName": "ADMIN AGENT"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telegram_user": "={{ $('Telegram Trigger').item.json.message.from.id.toString() }}",
+            "chatInput": "={{ $('Telegram Trigger').item.json.message.text }}",
+            "actual_screen": "={{ $json.output }}"
+          },
+          "matchingColumns": [
+            "telegram_user"
+          ],
+          "schema": [
+            {
+              "id": "telegram_user",
+              "displayName": "telegram_user",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chatInput",
+              "displayName": "chatInput",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "actual_screen",
+              "displayName": "actual_screen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        352,
+        1504
+      ],
+      "name": "Call ADMIN AGENT",
+      "id": "f99e806f-4367-4a00-b49d-1a6b10f8010c"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "gIq6sMkb6OleStLw",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/gIq6sMkb6OleStLw",
+          "cachedResultName": "MAIN MENU"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_from_id": "={{ $('Telegram Trigger').item.json.message.from.id.toString() }}",
+            "actual_screen": "={{ $json.output }}"
+          },
+          "matchingColumns": [
+            "message_from_id"
+          ],
+          "schema": [
+            {
+              "id": "message_from_id",
+              "displayName": "message_from_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "actual_screen",
+              "displayName": "actual_screen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        352,
+        -288
+      ],
+      "name": "Call MAIN MENU",
+      "id": "c1c6615c-e959-436c-923a-d02198df64ac"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "5c838bd5-8530-4669-9c5c-ef10aed6cba0",
+              "leftValue": "={{ $json }}",
+              "rightValue": true,
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "4ac4bee5-59df-47e7-ac56-31bfc39f10ee",
+              "leftValue": "={{ $json.permitido }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -2384,
+        400
+      ],
+      "id": "4bb48e70-2dab-4b51-ab05-58aae18c8a99",
+      "name": "Allow User?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "07ce8839-126d-44c2-abe5-1d1988fe3b23",
+              "name": "=output",
+              "value": "=🚫 **Acceso Restringido**\n\nLo sentimos, pero actualmente **no tienes permisos** para interactuar con **AgendaBot**.\n\nTu cuenta no figura en la lista de usuarios autorizados. Por este motivo, las funciones de agenda, tareas y recordatorios no están disponibles para ti en este momento.\n\n⚠️ **¿Qué puedes hacer?**\nSi crees que esto es un error o necesitas solicitar acceso, por favor ponte en contacto con el **Administrador del sistema**.\n\nTu ID de usuario es: `{{ $('Get User').item.json.telegram_user }}`\n",
+              "type": "string"
+            },
+            {
+              "id": "16a161e9-925e-4c38-a971-cb39f2c7cffd",
+              "name": "telegram_user",
+              "value": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2096,
+        576
+      ],
+      "id": "49017a3a-5780-4c78-9ed3-29e5e4c72a82",
+      "name": "MAIN MENU1"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.telegram_user }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -1872,
+        576
+      ],
+      "id": "b9dd2820-aa60-4122-b83e-5f435da0547b",
+      "name": "Send a text message",
+      "webhookId": "a3db47c6-c4be-4a39-b650-6fb9d84d0368",
+      "credentials": {
+        "telegramApi": {
+          "id": "Xd6DqLOE6H1W8yaH",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2018582490,
+          "mode": "list",
+          "cachedResultName": "USUARIOS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=2018582490"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "telegram_user",
+              "lookupValue": "={{ $json.message.from.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -2592,
+        400
+      ],
+      "id": "5be17a9e-d746-4227-9f7b-ed9c4451e2c1",
+      "name": "Get User",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1495084735,
+          "mode": "list",
+          "cachedResultName": "SESSIONS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=1495084735"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "telegram_user",
+              "lookupValue": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -2096,
+        384
+      ],
+      "id": "9a50d590-ae4f-4194-ac83-f7f2c47cba07",
+      "name": "Get User Session",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1495084735,
+          "mode": "list",
+          "cachedResultName": "SESSIONS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=1495084735"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp_ultima_interaccion": "={{ $now }}",
+            "telegram_user": "={{ $json.message.from.id }}",
+            "pantalla_actual": "MAIN_MENU"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "telegram_user",
+              "displayName": "telegram_user",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pantalla_actual",
+              "displayName": "pantalla_actual",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "paso_actual",
+              "displayName": "paso_actual",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "datos_parciales",
+              "displayName": "datos_parciales",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "timestamp_ultima_interaccion",
+              "displayName": "timestamp_ultima_interaccion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1424,
+        384
+      ],
+      "id": "0e908ca1-1d33-41dd-9541-eff4fcf33294",
+      "name": "Save Session",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "e6df500f-6cfc-4eb1-ae35-d59e72f699ee",
+              "leftValue": "={{ $json }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1872,
+        384
+      ],
+      "id": "5f84653d-92cb-4055-ab61-0e5a41512d76",
+      "name": "New session?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1d6c9d93-08b7-40dd-88fa-7bddaa3c015d",
+              "name": "message.from.id",
+              "value": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1648,
+        288
+      ],
+      "id": "141addee-76c3-4ddb-8075-847b462d01f4",
+      "name": "Create Session Info"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U",
+          "mode": "list",
+          "cachedResultName": "n8n_proyecto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 761378897,
+          "mode": "list",
+          "cachedResultName": "LOGS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kULA8R52h-BNE1vC09og0Yl8PKV3nUFJ2OUfD561S3U/edit#gid=761378897"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $now.format('yyyy-MM-dd') }}",
+            "telegram_user": "={{ $json.telegram_user }}",
+            "pantalla": "={{ $json.pantalla_actual }}",
+            "resultado": "={{ $('Structured Response').item.json.output }}",
+            "opcion_elegida": "={{ $('Telegram Trigger').item.json.message.text }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telegram_user",
+              "displayName": "telegram_user",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pantalla",
+              "displayName": "pantalla",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "opcion_elegida",
+              "displayName": "opcion_elegida",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resultado",
+              "displayName": "resultado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1264,
+        368
+      ],
+      "id": "9c3c72de-6c26-44cf-841b-6048de052605",
+      "name": "APPEND LOG",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DlZYHrjKDTxHghoa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "x70OInvjFxzJxq2d",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/x70OInvjFxzJxq2d",
+          "cachedResultName": "LISTAS AGENT"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chatInput": "={{ $('Telegram Trigger').item.json.message.text }}",
+            "telegram_user": "={{ $('Telegram Trigger').item.json.message.from.id.toString() }}",
+            "actual_screen": "={{ $json.output }}"
+          },
+          "matchingColumns": [
+            "chatInput"
+          ],
+          "schema": [
+            {
+              "id": "telegram_user",
+              "displayName": "telegram_user",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chatInput",
+              "displayName": "chatInput",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "actual_screen",
+              "displayName": "actual_screen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        352,
+        832
+      ],
+      "name": "Call LISTAS AGENT",
+      "id": "0db9a340-4df1-4707-9e88-3429575e6c21"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        656
+      ],
+      "id": "dca1d171-e984-4073-9c9a-a3767f10f69c",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Uraezaqnm4BlWCgn",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "ACTUAL MENU": {
+      "main": [
+        [
+          {
+            "node": "HELP",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call MAIN MENU",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call AGENDA AGENT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call TAREAS AGENT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call RECORDATORIOS AGENT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call HABITOS AGENT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call LISTAS AGENT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call 'RESUMEN DIARIO'",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call CONFIG AGENT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call ADMIN AGENT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Structured Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Data": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente Memoria": {
+      "main": [
+        [
+          {
+            "node": "ACTUAL MENU",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agente Memoria",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HELP": {
+      "main": [
+        [
+          {
+            "node": "Structured Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call AGENDA AGENT": {
+      "main": [
+        [
+          {
+            "node": "Structured Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UPDATE SESSION": {
+      "main": [
+        [
+          {
+            "node": "APPEND LOG",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Response": {
+      "main": [
+        [
+          {
+            "node": "UPDATE SESSION",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call TAREAS AGENT": {
+      "main": [
+        [
+          {
+            "node": "Structured Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Agente Memoria",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory Manager": {
+      "main": [
+        [
+          {
+            "node": "Agente Memoria",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call RECORDATORIOS AGENT": {
+      "main": [
+        [
+          {
+            "node": "Structured Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call HABITOS AGENT": {
+      "main": [
+        [
+          {
+            "node": "Structured Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call CONFIG AGENT": {
+      "main": [
+        [
+          {
+            "node": "Structured Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call ADMIN AGENT": {
+      "main": [
+        [
+          {
+            "node": "Structured Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call MAIN MENU": {
+      "main": [
+        [
+          {
+            "node": "Structured Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Allow User?": {
+      "main": [
+        [
+          {
+            "node": "Get User Session",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "MAIN MENU1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MAIN MENU1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get User": {
+      "main": [
+        [
+          {
+            "node": "Allow User?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get User Session": {
+      "main": [
+        [
+          {
+            "node": "New session?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Session": {
+      "main": [
+        [
+          {
+            "node": "Structured Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New session?": {
+      "main": [
+        [
+          {
+            "node": "Create Session Info",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Session Info": {
+      "main": [
+        [
+          {
+            "node": "Save Session",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Save Usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call LISTAS AGENT": {
+      "main": [
+        [
+          {
+            "node": "Structured Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente Memoria",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4e7f61551d974e9201959bc61f3fe1ba29fb38be1f22e798be449222f24c742f"
+  }
+}
